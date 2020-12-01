@@ -43,6 +43,7 @@ int day1_1(char *input, char *output, size_t n)
 	}
 
 exit:
+	fclose(fp);
 	g_array_free(numbers, true);
 	if (result <= 0)
 	{
@@ -93,6 +94,7 @@ int day1_2(char *input, char *output, size_t n)
 	}
 
 exit:
+	fclose(fp);
 	g_array_free(numbers, true);
 	if (result <= 0)
 	{
