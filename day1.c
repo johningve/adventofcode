@@ -4,24 +4,21 @@
 #include <glib.h>
 
 #include "adventofcode.h"
+#include "util.h"
 
-int day1(char *input, char *output, size_t n)
+int day1_1(char *input, char *output, size_t n)
 {
 	int result = -1;
 	GArray *numbers = g_array_new(false, false, sizeof(int));
 	// find two numbers in input that add up to 2020 exactly, then multiply those numbers
 	FILE *fp = fopen(input, "r");
-
-	char *line;
-	size_t len = 0;
-	while (getline(&line, &len, fp) != -1)
+	if (fp == NULL)
 	{
-		int num = atoi(line);
-		g_array_append_val(numbers, num);
+		perror("day1");
+		goto exit;
 	}
-	free(line);
 
-	if (errno)
+	if (read_numbers(fp, numbers) == -1)
 	{
 		perror("day1");
 		goto exit;
@@ -41,6 +38,56 @@ int day1(char *input, char *output, size_t n)
 			{
 				result = vi * vj;
 				goto exit;
+			}
+		}
+	}
+
+exit:
+	g_array_free(numbers, true);
+	if (result <= 0)
+	{
+		return -1;
+	}
+	snprintf(output, n, "%d\n", result);
+	return 0;
+}
+
+int day1_2(char *input, char *output, size_t n)
+{
+	int result = -1;
+	GArray *numbers = g_array_new(false, false, sizeof(int));
+	// find two numbers in input that add up to 2020 exactly, then multiply those numbers
+	FILE *fp = fopen(input, "r");
+	if (fp == NULL)
+	{
+		perror("day1");
+		goto exit;
+	}
+
+	if (read_numbers(fp, numbers) == -1)
+	{
+		perror("day1");
+		goto exit;
+	}
+
+	for (int i = 0; i < numbers->len; i++)
+	{
+		for (int j = 0; j < numbers->len; j++)
+		{
+			for (int k = 0; k < numbers->len; k++)
+			{
+				if (i == j || j == k || i == k)
+					continue;
+
+				int vi = g_array_index(numbers, int, i);
+				int vj = g_array_index(numbers, int, j);
+				int vk = g_array_index(numbers, int, k);
+
+				if (vi + vj + vk == 2020)
+				{
+					result = vi * vj * vk;
+					goto exit;
+				}
 			}
 		}
 	}

@@ -8,12 +8,14 @@
 static size_t output_size = 100;
 
 static struct option options[] = {
-	{"day1", required_argument, 0, 0},
+	{"day1_1", required_argument, 0, 0},
+	{"day1_2", required_argument, 0, 0},
 	{0, 0, 0, 0},
 };
 
 static solution solutions[] = {
-	day1,
+	day1_1,
+	day1_2,
 };
 
 int main(int argc, char *argv[])

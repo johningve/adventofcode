@@ -2,7 +2,7 @@
 
 EXE = adventofcode
 CFLAGS = -Wall -Werror -O2 
-LDFLAGS = 
+LDFLAGS =
 
 SRCS := $(wildcard *.c)
 OBJS := $(SRCS:.c=.o)
