@@ -1,14 +1,14 @@
 #include "util.h"
 
-int read_numbers(FILE *fp, GArray *arr)
+int read_numbers(std::FILE *fp, std::vector<int> &arr)
 {
 	int n = 0;
-	char *line;
+	char *line = NULL;
 	size_t len = 0;
 	while (getline(&line, &len, fp) != -1)
 	{
 		int num = atoi(line);
-		g_array_append_val(arr, num);
+		arr.push_back(num);
 		n++;
 	}
 	if (errno)

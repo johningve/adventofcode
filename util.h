@@ -1,9 +1,7 @@
-#ifndef UTIL_H
-#define UTIL_H
+#pragma once
 
-#include <stdio.h>
-#include <glib.h>
+#include <cstdio>
+#include <iostream>
+#include <vector>
 
-int read_numbers(FILE *fp, GArray *arr);
-
-#endif // UTIL_H
+int read_numbers(std::FILE *fp, std::vector<int> &arr);
