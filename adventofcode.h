@@ -1,8 +1,8 @@
 #ifndef ADVENTOFCODE_H
 #define ADVENTOFCODE_H
 
-typedef char *(*solution)(char *);
+typedef int (*solution)(char *, char *, size_t);
 
-char *day1(char *input);
+int day1(char *input, char *output, size_t n);
 
 #endif // ADVENTOFCODE_H
