@@ -16,19 +16,12 @@ int find_subset_sum(int sum, int num, std::vector<int> &arr)
 	return -1;
 }
 
-void day1_1(std::string file_path)
+void day1_1(std::ifstream &file)
 {
 	int result = -1;
 	std::vector<int> numbers;
 	// find two numbers in input that add up to 2020 exactly, then multiply those numbers
-	std::FILE *fp = fopen(file_path.c_str(), "r");
-	if (fp == NULL)
-	{
-		perror("day1");
-		goto exit;
-	}
-
-	if (read_numbers(fp, numbers) == -1)
+	if (read_numbers(file, numbers) == -1)
 	{
 		perror("day1");
 		goto exit;
@@ -43,23 +36,16 @@ void day1_1(std::string file_path)
 	}
 
 exit:
-	fclose(fp);
 	std::cout << std::to_string(result) << std::endl;
 }
 
-void day1_2(std::string file_path)
+void day1_2(std::ifstream &file)
 {
 	int result = -1;
 	std::vector<int> numbers;
 	// find two numbers in input that add up to 2020 exactly, then multiply those numbers
-	std::FILE *fp = fopen(file_path.c_str(), "r");
-	if (fp == NULL)
-	{
-		perror("day1");
-		goto exit;
-	}
 
-	if (read_numbers(fp, numbers) == -1)
+	if (read_numbers(file, numbers) == -1)
 	{
 		perror("day1");
 		goto exit;
@@ -77,6 +63,5 @@ void day1_2(std::string file_path)
 	}
 
 exit:
-	fclose(fp);
 	std::cout << std::to_string(result) << std::endl;
 }

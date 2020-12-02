@@ -1,7 +1,6 @@
 #pragma once
 
-#include <cstdio>
-#include <iostream>
+#include <fstream>
 #include <vector>
 
-int read_numbers(std::FILE *fp, std::vector<int> &arr);
+int read_numbers(std::ifstream &file, std::vector<int> &arr);

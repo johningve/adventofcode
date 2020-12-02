@@ -1,20 +1,19 @@
+#include <sstream>
+#include <string>
+
 #include "util.h"
 
-int read_numbers(std::FILE *fp, std::vector<int> &arr)
+int read_numbers(std::ifstream &file, std::vector<int> &arr)
 {
 	int n = 0;
-	char *line = NULL;
-	size_t len = 0;
-	while (getline(&line, &len, fp) != -1)
+	std::string line;
+	while (std::getline(file, line))
 	{
-		int num = atoi(line);
-		arr.push_back(num);
+		int num;
+		std::istringstream iss(line);
+		if (!(iss >> num))
+			break;
 		n++;
 	}
-	if (errno)
-	{
-		n = -1;
-	}
-	free(line);
 	return n;
 }

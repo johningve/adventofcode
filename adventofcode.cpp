@@ -1,7 +1,5 @@
+#include <fstream>
 #include <vector>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include <getopt.h>
 
 #include "adventofcode.h"
@@ -20,6 +18,11 @@ int main(int argc, char *argv[])
 			break;
 
 		// run the solution
-		solutions[option_index](optarg);
+		std::ifstream file(optarg);
+		if (file.fail())
+		{
+			perror(options[option_index].name);
+		}
+		solutions[option_index](file);
 	}
 }
