@@ -1,22 +1,25 @@
-.PHONY: all debug
+.PHONY: all debug clean
 
 EXE = adventofcode
-CFLAGS = -Wall -Werror -O2 
+CXXFLAGS = -Wall -Werror -O2
 LDFLAGS =
 
 SRCS := $(wildcard *.cpp)
 OBJS := $(SRCS:.cpp=.o)
+DEPS := $(SRCS:.cpp=.d)
 
 all: $(EXE)
 
 debug: CFLAGS += -g -O0
 debug: $(EXE)
 
+clean:
+	$(RM) $(OBJS) $(EXE) $(DEPS)
+
 $(EXE): $(OBJS)
-	$(CXX) -o $(EXE) $(OBJS) $(LDFLAGS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+-include $(DEPS)
 
 %.o: %.cpp
-	$(CXX) -o $@ $(CFLAGS) -c $< 
-
-clean:
-	rm -f $(OBJS) $(EXE)
+	$(CXX) -o $@ $(CXXFLAGS) -MMD -MP -c $<

@@ -36,7 +36,7 @@ void day1_1(std::ifstream &file)
 	}
 
 exit:
-	std::cout << std::to_string(result) << std::endl;
+	std::cout << result << std::endl;
 }
 
 void day1_2(std::ifstream &file)
@@ -63,5 +63,5 @@ void day1_2(std::ifstream &file)
 	}
 
 exit:
-	std::cout << std::to_string(result) << std::endl;
+	std::cout << result << std::endl;
 }

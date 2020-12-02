@@ -5,7 +5,7 @@
 
 int read_numbers(std::ifstream &file, std::vector<int> &arr)
 {
-	int n = 0;
+	int n = -1;
 	std::string line;
 	while (std::getline(file, line))
 	{
@@ -13,6 +13,7 @@ int read_numbers(std::ifstream &file, std::vector<int> &arr)
 		std::istringstream iss(line);
 		if (!(iss >> num))
 			break;
+		arr.push_back(num);
 		n++;
 	}
 	return n;
