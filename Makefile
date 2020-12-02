@@ -1,17 +1,17 @@
-.PHONY: all debug clean
+.PHONY: release debug clean
 
 EXE = adventofcode
-CXXFLAGS = -Wall -Werror -O2
+CXXFLAGS = -Wall -Werror -O3
 LDFLAGS =
 
 SRCS := $(wildcard *.cpp)
 OBJS := $(SRCS:.cpp=.o)
 DEPS := $(SRCS:.cpp=.d)
 
-all: $(EXE)
-
-debug: CFLAGS += -g -O0
+debug: CXXFLAGS += -g -Og
 debug: $(EXE)
+
+release: $(EXE)
 
 clean:
 	$(RM) $(OBJS) $(EXE) $(DEPS)
