@@ -58,7 +58,7 @@ void day2_2(std::ifstream &file)
 		bool rule1 = password[pos1] == rule;
 		bool rule2 = password[pos2] == rule;
 
-		if ((rule1 || rule2) && !(rule1 && rule2))
+		if (rule1 != rule2)
 		{
 			num_valid++;
 		}
