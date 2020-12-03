@@ -33,6 +33,7 @@ void day1_1(std::ifstream &file)
 		if (j == i || j == -1)
 			continue;
 		result = numbers[i] * numbers[j];
+		goto exit;
 	}
 
 exit:
@@ -59,6 +60,7 @@ void day1_2(std::ifstream &file)
 			if (k == -1 || k == i || k == j || j == i)
 				continue;
 			result = numbers[i] * numbers[j] * numbers[k];
+			goto exit;
 		}
 	}
 
