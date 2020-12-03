@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 		if (file.fail())
 		{
 			perror(options[option_index].name);
+			break;
 		}
 		solutions[option_index](file);
 	}
