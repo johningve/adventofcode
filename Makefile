@@ -1,7 +1,7 @@
 .PHONY: release debug clean
 
 EXE = adventofcode
-CXXFLAGS = -Wall -Werror -O3
+CXXFLAGS = -std=c++17 -Wall -Werror -O3
 LDFLAGS =
 
 SRCS := $(wildcard *.cpp)
