@@ -3,7 +3,7 @@
 
 #include "adventofcode.h"
 
-long trees_on_slope(std::ifstream &file, int slopeX, int slopeY)
+long trees_on_slope(std::istream &file, int slopeX, int slopeY)
 {
 	long x = 0, y = 0, num_trees = 0;
 	std::string line;
@@ -25,12 +25,12 @@ long trees_on_slope(std::ifstream &file, int slopeX, int slopeY)
 	return num_trees;
 }
 
-void day3_1(std::ifstream &file)
+void day3_1(std::istream &file)
 {
 	std::cout << trees_on_slope(file, 3, 1) << std::endl;
 }
 
-void day3_2(std::ifstream &file)
+void day3_2(std::istream &file)
 {
 	// int is too small
 	long answer = 1;

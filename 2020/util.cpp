@@ -3,7 +3,7 @@
 
 #include "util.h"
 
-int read_numbers(std::ifstream &file, std::vector<int> &arr)
+int read_numbers(std::istream &file, std::vector<int> &arr)
 {
 	int n = -1;
 	std::string line;

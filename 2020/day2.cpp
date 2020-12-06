@@ -1,11 +1,11 @@
 #include <iostream>
-#include <fstream>
+#include <istream>
 #include <string>
 #include <regex>
 
 #include "adventofcode.h"
 
-void day2_1(std::ifstream &file)
+void day2_1(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;
@@ -39,7 +39,7 @@ void day2_1(std::ifstream &file)
 	std::cout << num_valid << std::endl;
 }
 
-void day2_2(std::ifstream &file)
+void day2_2(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;

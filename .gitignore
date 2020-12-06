@@ -53,6 +53,7 @@ dkms.conf
 
 # targets
 adventofcode
+test
 
 # inputs
 input/

@@ -94,7 +94,7 @@ public:
 };
 
 template <class T>
-void day4(std::ifstream &file)
+void day4(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;
@@ -146,12 +146,12 @@ void day4(std::ifstream &file)
 	std::cout << num_valid << std::endl;
 }
 
-void day4_1(std::ifstream &file)
+void day4_1(std::istream &file)
 {
 	day4<Passport>(file);
 }
 
-void day4_2(std::ifstream &file)
+void day4_2(std::istream &file)
 {
 	day4<Passport2>(file);
 }
