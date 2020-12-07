@@ -40,7 +40,7 @@ int get_boarding_id(std::string pass)
 	return std::min(row_lower, row_upper) * 8 + std::max(column_lower, column_upper);
 }
 
-void day5_1(std::istream &file)
+int day5_1(std::istream &file)
 {
 	int highest_id = 0;
 	std::string pass;
@@ -54,6 +54,7 @@ void day5_1(std::istream &file)
 	}
 
 	std::cout << highest_id << std::endl;
+	return 0;
 }
 
 #ifdef TEST
@@ -66,7 +67,7 @@ TEST_CASE("Boarding id calculated correctly", "[day5]")
 }
 #endif
 
-void day5_2(std::istream &file)
+int day5_2(std::istream &file)
 {
 	bool seats[1024] = {false};
 	std::string pass;
@@ -83,7 +84,7 @@ void day5_2(std::istream &file)
 			if (seats[middle - i - 1] && seats[middle - i + 1])
 			{
 				std::cout << middle - i << std::endl;
-				return;
+				return 0;
 			}
 		}
 
@@ -92,8 +93,9 @@ void day5_2(std::istream &file)
 			if (seats[middle + i - 1] && seats[middle + i + 1])
 			{
 				std::cout << middle + i << std::endl;
-				return;
+				return 0;
 			}
 		}
 	}
+	return 0;
 }

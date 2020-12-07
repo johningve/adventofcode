@@ -16,7 +16,7 @@ int find_subset_sum(int sum, int num, std::vector<int> &arr)
 	return -1;
 }
 
-void day1_1(std::istream &file)
+int day1_1(std::istream &file)
 {
 	int result = -1;
 	std::vector<int> numbers;
@@ -38,9 +38,10 @@ void day1_1(std::istream &file)
 
 exit:
 	std::cout << result << std::endl;
+	return 0;
 }
 
-void day1_2(std::istream &file)
+int day1_2(std::istream &file)
 {
 	int result = -1;
 	std::vector<int> numbers;
@@ -66,4 +67,5 @@ void day1_2(std::istream &file)
 
 exit:
 	std::cout << result << std::endl;
+	return 0;
 }

@@ -146,12 +146,14 @@ void day4(std::istream &file)
 	std::cout << num_valid << std::endl;
 }
 
-void day4_1(std::istream &file)
+int day4_1(std::istream &file)
 {
 	day4<Passport>(file);
+	return 0;
 }
 
-void day4_2(std::istream &file)
+int day4_2(std::istream &file)
 {
 	day4<Passport2>(file);
+	return 0;
 }

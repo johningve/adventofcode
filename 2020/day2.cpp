@@ -5,7 +5,7 @@
 
 #include "adventofcode.h"
 
-void day2_1(std::istream &file)
+int day2_1(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;
@@ -37,9 +37,10 @@ void day2_1(std::istream &file)
 	}
 
 	std::cout << num_valid << std::endl;
+	return 0;
 }
 
-void day2_2(std::istream &file)
+int day2_2(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;
@@ -65,4 +66,5 @@ void day2_2(std::istream &file)
 	}
 
 	std::cout << num_valid << std::endl;
+	return 0;
 }
