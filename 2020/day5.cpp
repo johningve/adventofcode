@@ -8,10 +8,6 @@
 #include <catch2/catch.hpp>
 #endif
 
-#ifdef TEST
-#include <catch2/catch.hpp>
-#endif
-
 #include "adventofcode.h"
 
 int get_boarding_id(std::string pass)
