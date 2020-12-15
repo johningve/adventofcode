@@ -3,9 +3,9 @@
 
 #include "util.h"
 
-int read_numbers(std::istream &file, std::vector<int> &arr)
+std::vector<int> read_numbers(std::istream &file)
 {
-	int n = -1;
+	std::vector<int> arr;
 	std::string line;
 	while (std::getline(file, line))
 	{
@@ -14,7 +14,18 @@ int read_numbers(std::istream &file, std::vector<int> &arr)
 		if (!(iss >> num))
 			break;
 		arr.push_back(num);
-		n++;
 	}
-	return n;
+	return arr;
+}
+
+int find_subset_sum(int sum, int num, std::vector<int> &arr)
+{
+	for (std::size_t j = 0; j < arr.size(); j++)
+	{
+		if (arr[j] + num == sum)
+		{
+			return j;
+		}
+	}
+	return -1;
 }

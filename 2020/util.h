@@ -3,4 +3,6 @@
 #include <istream>
 #include <vector>
 
-int read_numbers(std::istream &file, std::vector<int> &arr);
+std::vector<int> read_numbers(std::istream &file);
+
+int find_subset_sum(int sum, int num, std::vector<int> &arr);
