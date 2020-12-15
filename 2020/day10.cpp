@@ -30,39 +30,31 @@ long day10_1(std::istream &file)
 }
 
 // recursively count all possible routes to destination
-long foobar(Graph &graph, int src, int dest)
+long foobar(const std::vector<int> &numbers, int src, int dest)
 {
 	if (src == dest)
 		return 1;
-	int count = 0;
-	for (auto &node : graph.get_neighbors(src))
+	long count = 0;
+	for (int i = src + 1; i < (int)numbers.size() && i < src + 4; i++)
 	{
-		count += foobar(graph, node, dest);
+		if (numbers[i] - numbers[src] > 3)
+			break;
+		count += foobar(numbers, i, dest);
 	}
 	return count;
 }
 
 long day10_2(std::istream &file)
 {
-	Graph graph;
 	auto numbers = read_numbers(file);
 	std::sort(numbers.begin(), numbers.end());
-
-	// add edge from outlet to first adapters
-	for (int i = 0; i < (int)numbers.size() && numbers[i] < 4; i++)
-		graph.add_edge(0, numbers[i]);
+	numbers.insert(numbers.begin(), 0);
 
 	// add edge from last adapter to device
 	int max = *std::max_element(numbers.begin(), numbers.end());
-	graph.add_edge(max, max + 3);
+	numbers.push_back(max + 3);
 
-	// now add the rest of the possible edges
-	for (int i = 0; i < (int)numbers.size(); i++)
-		for (int j = i + 1; j < i + 4 && j < (int)numbers.size(); j++)
-			if (numbers[j] - numbers[i] < 4)
-				graph.add_edge(numbers[i], numbers[j]);
-
-	return foobar(graph, 0, max + 3);
+	return foobar(numbers, 0, numbers.size() - 1);
 }
 
 #ifdef TEST
