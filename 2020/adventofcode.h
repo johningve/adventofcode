@@ -33,6 +33,8 @@ define_solution(day8_1);
 define_solution(day8_2);
 define_solution(day9_1);
 define_solution(day9_2);
+define_solution(day10_1);
+define_solution(day10_2);
 
 inline void init_solutions()
 {
@@ -54,6 +56,8 @@ inline void init_solutions()
 	add_solution(day8_2);
 	add_solution(day9_1);
 	add_solution(day9_2);
+	add_solution(day10_1);
+	add_solution(day10_2);
 
 	// need an extra empty item for getopt
 	options.push_back({});
