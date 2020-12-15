@@ -1,8 +1,8 @@
 .PHONY: release debug clean
 
 EXE = adventofcode
-CXXFLAGS = -std=c++17 -Wall -Werror -O3
-LDFLAGS =
+CXXFLAGS = -std=c++17 -Wall -Werror -O3 -pthread
+LDFLAGS = -lpthread
 
 SRCS := $(wildcard *.cpp)
 TEST_SRCS := $(filter-out adventofcode.cpp, $(SRCS))

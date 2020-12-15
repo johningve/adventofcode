@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <thread>
 
 #include "adventofcode.h"
 #include "util.h"
@@ -54,7 +55,41 @@ long day10_2(std::istream &file)
 	int max = *std::max_element(numbers.begin(), numbers.end());
 	numbers.push_back(max + 3);
 
-	return foobar(numbers, 0, numbers.size() - 1);
+	// detect 3-jolts
+	std::vector<int> jolt3;
+	for (int i = 0; i < (int)numbers.size() - 1; i++)
+	{
+		if (numbers[i + 1] - numbers[i] == 3)
+		{
+			jolt3.push_back(i);
+		}
+	}
+
+	long answer = 1;
+	int prev = 0;
+	std::vector<std::thread> threads;
+	std::vector<int> counters;
+	for (int &curr : jolt3)
+	{
+		counters.push_back(0);
+		int i = counters.size() - 1;
+		threads.push_back(std::thread([&, i, prev, curr]() {
+			counters[i] = foobar(numbers, prev, curr);
+		}));
+		prev = curr;
+	}
+
+	for (auto &t : threads)
+	{
+		t.join();
+	}
+
+	for (auto &count : counters)
+	{
+		answer *= count;
+	}
+
+	return answer;
 }
 
 #ifdef TEST
