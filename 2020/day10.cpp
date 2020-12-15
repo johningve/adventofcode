@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <thread>
 
 #include "adventofcode.h"
 #include "util.h"
@@ -48,45 +47,30 @@ long foobar(const std::vector<int> &numbers, int src, int dest)
 long day10_2(std::istream &file)
 {
 	auto numbers = read_numbers(file);
+	// sort numbers
 	std::sort(numbers.begin(), numbers.end());
+
+	// add outlet at 0 jolts
 	numbers.insert(numbers.begin(), 0);
 
-	// add edge from last adapter to device
+	// add device at max+3 jolts
 	int max = *std::max_element(numbers.begin(), numbers.end());
 	numbers.push_back(max + 3);
 
-	// detect 3-jolts
+	// detect all indices with a 3-jolt jump
 	std::vector<int> jolt3;
 	for (int i = 0; i < (int)numbers.size() - 1; i++)
-	{
 		if (numbers[i + 1] - numbers[i] == 3)
-		{
 			jolt3.push_back(i);
-		}
-	}
 
+	// find the number of arrangements between each 3-jolt jump,
+	// and then multiply all of the arrangements together
 	long answer = 1;
 	int prev = 0;
-	std::vector<std::thread> threads;
-	std::vector<int> counters;
 	for (int &curr : jolt3)
 	{
-		counters.push_back(0);
-		int i = counters.size() - 1;
-		threads.push_back(std::thread([&, i, prev, curr]() {
-			counters[i] = foobar(numbers, prev, curr);
-		}));
+		answer *= foobar(numbers, prev, curr);
 		prev = curr;
-	}
-
-	for (auto &t : threads)
-	{
-		t.join();
-	}
-
-	for (auto &count : counters)
-	{
-		answer *= count;
 	}
 
 	return answer;
