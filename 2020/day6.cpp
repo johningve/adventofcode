@@ -1,4 +1,3 @@
-#include <iostream>
 #include <unordered_set>
 #include <unordered_map>
 
@@ -9,7 +8,7 @@
 
 #include "adventofcode.h"
 
-int day6_1(std::istream &file)
+long day6_1(std::istream &file)
 {
 	int sum = 0;
 	std::unordered_set<char> answered_questions;
@@ -28,11 +27,10 @@ int day6_1(std::istream &file)
 		}
 	}
 	sum += answered_questions.size();
-	std::cout << sum << std::endl;
-	return 0;
+	return sum;
 }
 
-int day6_2(std::istream &file)
+long day6_2(std::istream &file)
 {
 	int sum = 0;
 	int group_size = 0;
@@ -60,7 +58,6 @@ int day6_2(std::istream &file)
 	for (auto const &question : answered_questions)
 		if (group_size == question.second)
 			sum++;
-	std::cout << sum << std::endl;
 	return sum;
 }
 

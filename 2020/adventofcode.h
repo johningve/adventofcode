@@ -4,12 +4,12 @@
 #include <vector>
 #include <getopt.h>
 
-typedef int (*solution)(std::istream &file);
+typedef long (*solution)(std::istream &file);
 
 static std::vector<option> options;
 static std::vector<solution> solutions;
 
-#define define_solution(name) int name(std::istream &file);
+#define define_solution(name) long name(std::istream &file);
 
 #define add_solution(name)                               \
 	options.push_back({#name, required_argument, 0, 0}); \

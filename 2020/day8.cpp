@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include <string>
 #include <unordered_set>
@@ -43,7 +42,7 @@ public:
 	}
 };
 
-int day8_1(std::istream &file)
+long day8_1(std::istream &file)
 {
 	std::unordered_set<int> executed_set;
 	Handheld hh(file);
@@ -54,11 +53,10 @@ int day8_1(std::istream &file)
 		executed_set.insert(hh.ip);
 		hh.execute_instruction();
 	}
-	std::cout << hh.accumulator << std::endl;
 	return hh.accumulator;
 }
 
-int day8_2(std::istream &file)
+long day8_2(std::istream &file)
 {
 	Handheld hh(file);
 	for (int i = 0; i < (int)hh.instructions.size(); i++)
@@ -91,7 +89,6 @@ int day8_2(std::istream &file)
 		hh.accumulator = 0;
 		hh.instructions[i].first = tmp;
 	}
-	std::cout << hh.accumulator << std::endl;
 	return hh.accumulator;
 }
 

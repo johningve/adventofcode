@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 
 #include "adventofcode.h"
@@ -25,13 +24,12 @@ long trees_on_slope(std::istream &file, int slopeX, int slopeY)
 	return num_trees;
 }
 
-int day3_1(std::istream &file)
+long day3_1(std::istream &file)
 {
-	std::cout << trees_on_slope(file, 3, 1) << std::endl;
-	return 0;
+	return trees_on_slope(file, 3, 1);
 }
 
-int day3_2(std::istream &file)
+long day3_2(std::istream &file)
 {
 	// int is too small
 	long answer = 1;
@@ -40,6 +38,5 @@ int day3_2(std::istream &file)
 	answer *= trees_on_slope(file, 5, 1);
 	answer *= trees_on_slope(file, 7, 1);
 	answer *= trees_on_slope(file, 1, 2);
-	std::cout << answer << std::endl;
-	return 0;
+	return answer;
 }

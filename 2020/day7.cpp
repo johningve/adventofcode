@@ -1,4 +1,3 @@
-#include <iostream>
 #include <regex>
 #include <string>
 #include <unordered_map>
@@ -80,16 +79,14 @@ private:
 	}
 };
 
-int day7_1(std::istream &file)
+long day7_1(std::istream &file)
 {
 	Day7 solution;
-	std::cout << solution.run(file, true) << std::endl;
-	return 0;
+	return solution.run(file, true);
 }
 
-int day7_2(std::istream &file)
+long day7_2(std::istream &file)
 {
 	Day7 solution;
-	std::cout << solution.run(file, false) << std::endl;
-	return 0;
+	return solution.run(file, false);
 }

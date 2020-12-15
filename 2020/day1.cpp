@@ -1,10 +1,7 @@
-#include <iostream>
-#include <cstdio>
-
 #include "adventofcode.h"
 #include "util.h"
 
-int day1_1(std::istream &file)
+long day1_1(std::istream &file)
 {
 	int result = -1;
 	// find two numbers in input that add up to 2020 exactly, then multiply those numbers
@@ -20,11 +17,10 @@ int day1_1(std::istream &file)
 		}
 	}
 
-	std::cout << result << std::endl;
-	return 0;
+	return result;
 }
 
-int day1_2(std::istream &file)
+long day1_2(std::istream &file)
 {
 	int result = -1;
 	// find two numbers in input that add up to 2020 exactly, then multiply those numbers
@@ -45,6 +41,5 @@ int day1_2(std::istream &file)
 		}
 	}
 
-	std::cout << result << std::endl;
-	return 0;
+	return result;
 }

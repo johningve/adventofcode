@@ -1,8 +1,6 @@
 #include <algorithm>
-#include <iostream>
 #include <string>
 #include <sstream>
-#include <cstdio>
 
 #ifdef TEST
 #include <catch2/catch.hpp>
@@ -36,7 +34,7 @@ int get_boarding_id(std::string pass)
 	return std::min(row_lower, row_upper) * 8 + std::max(column_lower, column_upper);
 }
 
-int day5_1(std::istream &file)
+long day5_1(std::istream &file)
 {
 	int highest_id = 0;
 	std::string pass;
@@ -49,8 +47,7 @@ int day5_1(std::istream &file)
 		}
 	}
 
-	std::cout << highest_id << std::endl;
-	return 0;
+	return highest_id;
 }
 
 #ifdef TEST
@@ -63,7 +60,7 @@ TEST_CASE("Boarding id calculated correctly", "[day5]")
 }
 #endif
 
-int day5_2(std::istream &file)
+long day5_2(std::istream &file)
 {
 	bool seats[1024] = {false};
 	std::string pass;
@@ -79,8 +76,7 @@ int day5_2(std::istream &file)
 		{
 			if (seats[middle - i - 1] && seats[middle - i + 1])
 			{
-				std::cout << middle - i << std::endl;
-				return 0;
+				return middle - i;
 			}
 		}
 
@@ -88,10 +84,9 @@ int day5_2(std::istream &file)
 		{
 			if (seats[middle + i - 1] && seats[middle + i + 1])
 			{
-				std::cout << middle + i << std::endl;
-				return 0;
+				return middle + i;
 			}
 		}
 	}
-	return 0;
+	return -1;
 }

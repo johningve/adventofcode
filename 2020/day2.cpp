@@ -1,11 +1,10 @@
-#include <iostream>
 #include <istream>
 #include <string>
 #include <regex>
 
 #include "adventofcode.h"
 
-int day2_1(std::istream &file)
+long day2_1(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;
@@ -36,11 +35,10 @@ int day2_1(std::istream &file)
 		}
 	}
 
-	std::cout << num_valid << std::endl;
-	return 0;
+	return num_valid;
 }
 
-int day2_2(std::istream &file)
+long day2_2(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;
@@ -65,6 +63,5 @@ int day2_2(std::istream &file)
 		}
 	}
 
-	std::cout << num_valid << std::endl;
-	return 0;
+	return num_valid;
 }

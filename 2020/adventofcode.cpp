@@ -1,3 +1,4 @@
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include <getopt.h>
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
 			perror(options[option_index].name);
 			break;
 		}
-		solutions[option_index](file);
+		long result = solutions[option_index](file);
+		std::cout << result << std::endl;
 	}
 }
