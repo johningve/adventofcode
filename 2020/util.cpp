@@ -29,3 +29,10 @@ int find_subset_sum(int sum, int num, std::vector<int> &arr)
 	}
 	return -1;
 }
+
+void swap(int &a, int &b)
+{
+	int t = a;
+	a = b;
+	b = t;
+}
