@@ -4,12 +4,12 @@
 #include <vector>
 #include <getopt.h>
 
-typedef long (*solution)(std::istream &file);
+typedef int64_t (*solution)(std::istream &file);
 
 static std::vector<option> options;
 static std::vector<solution> solutions;
 
-#define define_solution(name) long name(std::istream &file);
+#define define_solution(name) int64_t name(std::istream &file);
 
 #define add_solution(name)                               \
 	options.push_back({#name, required_argument, 0, 0}); \
@@ -42,6 +42,9 @@ define_solution(day12_2);
 define_solution(day13_1);
 define_solution(day13_2);
 
+define_solution(day14_1);
+define_solution(day14_2);
+
 inline void init_solutions()
 {
 	add_solution(day1_1);
@@ -70,6 +73,9 @@ inline void init_solutions()
 	add_solution(day12_2);
 	add_solution(day13_1);
 	add_solution(day13_2);
+
+	add_solution(day14_1);
+	add_solution(day14_2);
 
 	// need an extra empty item for getopt
 	options.push_back({});

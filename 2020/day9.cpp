@@ -12,7 +12,7 @@
 #define preamble_length 25
 #endif
 
-long day9_1(std::istream &file)
+int64_t day9_1(std::istream &file)
 {
 	std::vector<int> numbers;
 	std::string line;
@@ -43,7 +43,7 @@ long day9_1(std::istream &file)
 	return -1;
 }
 
-long day9_2(std::istream &file)
+int64_t day9_2(std::istream &file)
 {
 	long target = day9_1(file);
 	// reset the input stream

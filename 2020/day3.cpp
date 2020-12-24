@@ -24,12 +24,12 @@ long trees_on_slope(std::istream &file, int slopeX, int slopeY)
 	return num_trees;
 }
 
-long day3_1(std::istream &file)
+int64_t day3_1(std::istream &file)
 {
 	return trees_on_slope(file, 3, 1);
 }
 
-long day3_2(std::istream &file)
+int64_t day3_2(std::istream &file)
 {
 	// int is too small
 	long answer = 1;

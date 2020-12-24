@@ -11,7 +11,7 @@ OBJS := $(SRCS:.cpp=.o)
 TEST_OBJS := $(TEST_SRCS:.cpp=.test.o)
 DEPS := $(SRCS:.cpp=.d)
 
-debug: CXXFLAGS += -g -Og
+debug: CXXFLAGS += -g -O0
 debug: $(EXE)
 
 release: $(EXE)
@@ -19,7 +19,7 @@ release: $(EXE)
 clean:
 	$(RM) $(OBJS) $(TEST_OBJS) $(EXE) test $(DEPS)
 
-test: CXXFLAGS += -DTEST -g -Og
+test: CXXFLAGS += -DTEST -g -O0
 test: $(TEST_OBJS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
