@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <istream>
 #include <vector>
 #include <getopt.h>
@@ -41,9 +42,10 @@ define_solution(day12_1);
 define_solution(day12_2);
 define_solution(day13_1);
 define_solution(day13_2);
-
 define_solution(day14_1);
 define_solution(day14_2);
+define_solution(day15_1);
+define_solution(day15_2);
 
 inline void init_solutions()
 {
@@ -73,9 +75,10 @@ inline void init_solutions()
 	add_solution(day12_2);
 	add_solution(day13_1);
 	add_solution(day13_2);
-
 	add_solution(day14_1);
 	add_solution(day14_2);
+	add_solution(day15_1);
+	add_solution(day15_2);
 
 	// need an extra empty item for getopt
 	options.push_back({});
