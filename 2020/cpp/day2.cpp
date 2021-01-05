@@ -4,7 +4,7 @@
 
 #include "adventofcode.h"
 
-long day2_1(std::istream &file)
+int64_t day2_1(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;
@@ -38,7 +38,7 @@ long day2_1(std::istream &file)
 	return num_valid;
 }
 
-long day2_2(std::istream &file)
+int64_t day2_2(std::istream &file)
 {
 	int num_valid = 0;
 	std::string line;

@@ -8,7 +8,7 @@
 
 #include "adventofcode.h"
 
-long day6_1(std::istream &file)
+int64_t day6_1(std::istream &file)
 {
 	int sum = 0;
 	std::unordered_set<char> answered_questions;
@@ -30,7 +30,7 @@ long day6_1(std::istream &file)
 	return sum;
 }
 
-long day6_2(std::istream &file)
+int64_t day6_2(std::istream &file)
 {
 	int sum = 0;
 	int group_size = 0;

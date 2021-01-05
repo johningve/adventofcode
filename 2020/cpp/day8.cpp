@@ -42,7 +42,7 @@ public:
 	}
 };
 
-long day8_1(std::istream &file)
+int64_t day8_1(std::istream &file)
 {
 	std::unordered_set<int> executed_set;
 	Handheld hh(file);
@@ -56,7 +56,7 @@ long day8_1(std::istream &file)
 	return hh.accumulator;
 }
 
-long day8_2(std::istream &file)
+int64_t day8_2(std::istream &file)
 {
 	Handheld hh(file);
 	for (int i = 0; i < (int)hh.instructions.size(); i++)

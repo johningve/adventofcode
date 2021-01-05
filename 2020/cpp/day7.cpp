@@ -79,13 +79,13 @@ private:
 	}
 };
 
-long day7_1(std::istream &file)
+int64_t day7_1(std::istream &file)
 {
 	Day7 solution;
 	return solution.run(file, true);
 }
 
-long day7_2(std::istream &file)
+int64_t day7_2(std::istream &file)
 {
 	Day7 solution;
 	return solution.run(file, false);

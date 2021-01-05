@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 			perror(options[option_index].name);
 			break;
 		}
-		long result = solutions[option_index](file);
+		int64_t result = solutions[option_index](file);
 		std::cout << result << std::endl;
 	}
 }

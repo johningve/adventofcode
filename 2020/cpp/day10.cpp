@@ -11,7 +11,7 @@
 #include <sstream>
 #endif
 
-long day10_1(std::istream &file)
+int64_t day10_1(std::istream &file)
 {
 	auto numbers = read_numbers(file);
 	std::sort(numbers.begin(), numbers.end());
@@ -44,7 +44,7 @@ long foobar(const std::vector<int> &numbers, int src, int dest)
 	return count;
 }
 
-long day10_2(std::istream &file)
+int64_t day10_2(std::istream &file)
 {
 	auto numbers = read_numbers(file);
 	// sort numbers

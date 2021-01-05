@@ -136,7 +136,7 @@ public:
 	}
 };
 
-long day12_1(std::istream &file)
+int64_t day12_1(std::istream &file)
 {
 	NavigationComputer nc;
 	std::string line;
@@ -147,7 +147,7 @@ long day12_1(std::istream &file)
 	return std::abs(nc.north) + std::abs(nc.east);
 }
 
-long day12_2(std::istream &file)
+int64_t day12_2(std::istream &file)
 {
 	WaypointNavigationComputer nc;
 	std::string line;

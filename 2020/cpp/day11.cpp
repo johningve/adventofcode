@@ -208,7 +208,7 @@ public:
 	}
 };
 
-long day11_1(std::istream &file)
+int64_t day11_1(std::istream &file)
 {
 	SeatingSystem ss(file);
 
@@ -226,7 +226,7 @@ long day11_1(std::istream &file)
 	return num_occupied;
 }
 
-long day11_2(std::istream &file)
+int64_t day11_2(std::istream &file)
 {
 	SeatingSystemV2 ss(file);
 

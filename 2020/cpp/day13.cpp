@@ -9,7 +9,7 @@
 #include <sstream>
 #endif
 
-long day13_1(std::istream &file)
+int64_t day13_1(std::istream &file)
 {
 	int arrival;
 	int earliest_departure = std::numeric_limits<int>::max();
@@ -39,13 +39,7 @@ long day13_1(std::istream &file)
 	return best_id * (earliest_departure - arrival);
 }
 
-long gcd(std::vector<int> numbers)
-{
-}
-
-long lcm()
-
-	long day13_2(std::istream &file)
+int64_t day13_2(std::istream &file)
 {
 	std::string line;
 	std::getline(file, line); // ignore first line
