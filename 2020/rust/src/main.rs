@@ -17,6 +17,8 @@ mod day1;
 mod day2;
 mod day3;
 mod solver;
+#[macro_use]
+mod util;
 
 fn main() -> io::Result<()> {
 	// open second argument as file

@@ -1,3 +1,4 @@
+use crate::post_inc;
 use crate::solver::Solver;
 
 pub struct Day3 {
@@ -8,11 +9,9 @@ impl Day3 {
 	fn trees_on_slope(&self, slope_x: usize, slope_y: usize) -> i64 {
 		let (mut num_trees, mut x, mut y) = (0, 0, 0);
 		for row in &self.slope {
-			if y % slope_y != 0 {
-				y += 1;
+			if post_inc!(y) % slope_y != 0 {
 				continue;
 			}
-			y += 1;
 			// can use the bytes instead of chars because we know
 			// that the only chars we care about are single byte.
 			if row.as_bytes()[x % row.len()] == '#' as u8 {
