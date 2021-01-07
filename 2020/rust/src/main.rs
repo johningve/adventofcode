@@ -1,7 +1,9 @@
+extern crate indoc;
 extern crate regex;
 
 use day1::Day1;
 use day2::Day2;
+use day3::Day3;
 use solver::Solver;
 
 use std::env;
@@ -13,6 +15,7 @@ use std::process;
 
 mod day1;
 mod day2;
+mod day3;
 mod solver;
 
 fn main() -> io::Result<()> {
@@ -29,6 +32,7 @@ fn main() -> io::Result<()> {
 	let results = match args[1].as_str() {
 		"day1" => Day1::new(lines).solve(),
 		"day2" => Day2::new(lines).solve(),
+		"day3" => Day3::new(lines).solve(),
 		_ => {
 			println!("Unknown day '{}'", args[1]);
 			process::exit(1);
