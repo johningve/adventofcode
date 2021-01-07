@@ -58,7 +58,7 @@ mod tests {
 	static INPUT: &'static [i64] = &[1721, 979, 366, 299, 675, 1456];
 
 	#[test]
-	fn test_part1() {
+	fn part1() {
 		let solution = Day1 {
 			numbers: INPUT.to_vec(),
 		};
@@ -66,7 +66,7 @@ mod tests {
 	}
 
 	#[test]
-	fn test_part2() {
+	fn part2() {
 		let solution = Day1 {
 			numbers: INPUT.to_vec(),
 		};
