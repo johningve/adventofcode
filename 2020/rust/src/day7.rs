@@ -1,10 +1,9 @@
 use crate::solver::Solver;
+use crate::util::push_key;
 use regex::Regex;
-use std::{
-    collections::{HashMap, HashSet, VecDeque},
-    hash::Hash,
-};
+use std::collections::{HashMap, HashSet, VecDeque};
 
+#[derive(Clone)]
 struct BagRule {
     name: String,
     number: i32,
@@ -47,28 +46,20 @@ impl Day7 {
     fn solve_part1(&mut self) -> i64 {
         let rules = self
             .child_to_parent
-            .get(&String::from("shiny gold"))
-            .unwrap();
-        self.find_all_compatible(rules);
+            .get("shiny gold")
+            .unwrap_or(&Vec::new())
+            .clone();
+        self.find_all_compatible(&rules);
         return self.compatible.len() as i64;
     }
 
     fn solve_part2(&self) -> i64 {
-        -1
-    }
-}
-
-fn push_key<K, V>(map: &mut HashMap<K, Vec<V>>, key: K, value: V)
-where
-    K: Eq + Hash,
-{
-    match map.get_mut(&key) {
-        Some(v) => {
-            v.push(value);
-        }
-        None => {
-            map.insert(key, vec![value]);
-        }
+        let rules = self
+            .parent_to_child
+            .get("shiny gold")
+            .unwrap_or(&Vec::new())
+            .clone();
+        return self.find_all_required(&rules) as i64 - 1;
     }
 }
 
@@ -85,7 +76,7 @@ impl Solver for Day7 {
             };
 
             let parent = matches.get(1).unwrap().as_str().to_owned();
-            let mut suffix = &line[..matches.get(0).unwrap().end()];
+            let mut suffix = &line[matches.get(0).unwrap().end()..];
             while let Some(matches) = child_reg.captures(suffix) {
                 let count = matches
                     .get(1)
@@ -110,14 +101,14 @@ impl Solver for Day7 {
                         number: count,
                     },
                 );
-                suffix = &suffix[..matches.get(0).unwrap().end()];
+                suffix = &suffix[matches.get(0).unwrap().end()..];
             }
         }
 
         day7
     }
 
-    fn solve(&self) -> (i64, i64) {
+    fn solve(&mut self) -> (i64, i64) {
         (self.solve_part1(), self.solve_part2())
     }
 }
