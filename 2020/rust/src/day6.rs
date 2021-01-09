@@ -65,7 +65,7 @@ impl Solver for Day6 {
         }
     }
 
-    fn solve(&self) -> (i64, i64) {
+    fn solve(&mut self) -> (i64, i64) {
         (self.solve_part1(), self.solve_part2())
     }
 }
