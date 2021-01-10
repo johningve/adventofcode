@@ -19,6 +19,7 @@ add_solutions![
     "day5" => day5::Day5,
     "day6" => day6::Day6,
     "day7" => day7::Day7,
+    "day8" => day8::Day8,
 ];
 
 fn main() -> io::Result<()> {
