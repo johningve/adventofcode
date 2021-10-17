@@ -31,7 +31,7 @@ fn main() -> io::Result<()> {
     }
     let path = PathBuf::from(&args[2]);
     let file = File::open(path)?;
-    let lines = io::BufReader::new(file).lines().filter_map(Result::ok);
+    let lines = io::BufReader::new(file).lines().map(Result::unwrap);
 
     if let Some(solution) = get_solution(&args[1], lines) {
         println!("{}: {}, {}", args[1], solution.0, solution.1);
