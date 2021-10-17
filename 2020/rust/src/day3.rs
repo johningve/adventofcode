@@ -14,16 +14,16 @@ impl Day3 {
             }
             // can use the bytes instead of chars because we know
             // that the only chars we care about are single byte.
-            if row.as_bytes()[x % row.len()] == '#' as u8 {
+            if row.as_bytes()[x % row.len()] == b'#' {
                 num_trees += 1;
             }
             x += slope_x;
         }
-        return num_trees;
+        num_trees
     }
 
     fn solve_part1(&self) -> i64 {
-        return self.trees_on_slope(3, 1);
+        self.trees_on_slope(3, 1)
     }
 
     fn solve_part2(&self) -> i64 {
@@ -33,7 +33,7 @@ impl Day3 {
         answer *= self.trees_on_slope(5, 1);
         answer *= self.trees_on_slope(7, 1);
         answer *= self.trees_on_slope(1, 2);
-        return answer;
+        answer
     }
 }
 
@@ -54,7 +54,7 @@ mod tests {
     use super::*;
     use indoc::indoc;
 
-    const INPUT: &'static str = indoc! {"
+    const INPUT: &str = indoc! {"
         ..##.......
         #...#...#..
         .#....#..#.

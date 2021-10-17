@@ -18,11 +18,11 @@ pub struct Day7 {
 
 impl Day7 {
     // cannot use recursion due to needing a mutable reference to self
-    fn find_all_compatible(&mut self, rules: &Vec<BagRule>) {
+    fn find_all_compatible(&mut self, rules: &[BagRule]) {
         let mut work = VecDeque::new();
         work.push_back(rules);
         while let Some(rules) = work.pop_front() {
-            for ref rule in rules {
+            for rule in rules {
                 self.compatible.insert(rule.name.clone());
                 if let Some(parent_rules) = self.child_to_parent.get(&rule.name) {
                     work.push_back(parent_rules);
@@ -31,7 +31,7 @@ impl Day7 {
         }
     }
 
-    fn find_all_required(&self, rules: &Vec<BagRule>) -> i32 {
+    fn find_all_required(&self, rules: &[BagRule]) -> i32 {
         let mut required = 1;
         for rule in rules {
             required += rule.number
@@ -50,7 +50,7 @@ impl Day7 {
             .unwrap_or(&Vec::new())
             .clone();
         self.find_all_compatible(&rules);
-        return self.compatible.len() as i64;
+        self.compatible.len() as i64
     }
 
     fn solve_part2(&self) -> i64 {
@@ -59,7 +59,7 @@ impl Day7 {
             .get("shiny gold")
             .unwrap_or(&Vec::new())
             .clone();
-        return self.find_all_required(&rules) as i64 - 1;
+        self.find_all_required(&rules) as i64 - 1
     }
 }
 

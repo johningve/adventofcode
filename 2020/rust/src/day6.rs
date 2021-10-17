@@ -44,7 +44,6 @@ impl Day6 {
                     Some(v) => *v += 1,
                     None => {
                         answered_questions.insert(c, 1);
-                        ()
                     }
                 }
             }

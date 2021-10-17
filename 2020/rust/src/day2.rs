@@ -15,7 +15,7 @@ impl PasswordRule {
 
         let min = matches.get(1).unwrap().as_str().parse();
         let max = matches.get(2).unwrap().as_str().parse();
-        let rule = matches.get(3).unwrap().as_str().chars().nth(0).unwrap();
+        let rule = matches.get(3).unwrap().as_str().chars().next().unwrap();
         let password = matches.get(4).unwrap().as_str();
 
         // Ignores errors for now
@@ -33,14 +33,14 @@ impl PasswordRule {
 
     fn validate_part1(&self) -> bool {
         let occurrences = self.password.matches(self.rule).count();
-        return occurrences >= self.min && occurrences <= self.max;
+        occurrences >= self.min && occurrences <= self.max
     }
 
     fn validate_part2(&self) -> bool {
         let pos1 = self.password.chars().nth(self.min - 1).unwrap() == self.rule;
         let pos2 = self.password.chars().nth(self.max - 1).unwrap() == self.rule;
 
-        return pos1 != pos2;
+        pos1 != pos2
     }
 }
 
@@ -56,7 +56,7 @@ impl Day2 {
                 count += 1;
             }
         }
-        return count;
+        count
     }
 
     fn solve_part2(&self) -> i64 {
@@ -66,7 +66,7 @@ impl Day2 {
                 count += 1;
             }
         }
-        return count;
+        count
     }
 }
 

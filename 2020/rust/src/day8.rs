@@ -61,7 +61,7 @@ impl Handheld {
             executed_set.insert(self.ip);
             self.execute_instruction();
         }
-        return false;
+        false
     }
 
     fn solve_part1(&mut self) -> i64 {
@@ -78,7 +78,6 @@ impl Handheld {
                 Instruction::Jmp(arg) => Instruction::Nop(*arg),
                 _ => continue,
             };
-            drop(instruction);
             if !self.detect_infinite_loop() {
                 break;
             }
@@ -109,7 +108,7 @@ mod tests {
     use super::*;
     use indoc::indoc;
 
-    const INPUT: &str = &indoc! {"
+    const INPUT: &str = indoc! {"
         nop +0
         acc +1
         jmp +4

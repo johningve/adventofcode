@@ -5,7 +5,7 @@ pub struct Day5 {
     boarding_passes: Vec<String>,
 }
 
-fn get_boarding_id(boarding_pass: &String) -> i64 {
+fn get_boarding_id(boarding_pass: &str) -> i64 {
     let (mut row_lower, mut row_upper, mut column_lower, mut column_upper) = (0, 127, 0, 7);
     for c in boarding_pass.chars() {
         match c {

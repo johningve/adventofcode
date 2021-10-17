@@ -5,7 +5,7 @@ pub struct Day1 {
     numbers: Vec<i64>,
 }
 
-fn find_subset_sum(sum: i64, numbers: &Vec<i64>) -> (usize, usize, bool) {
+fn find_subset_sum(sum: i64, numbers: &[i64]) -> (usize, usize, bool) {
     for (i, n) in numbers.iter().enumerate() {
         for (j, m) in numbers.iter().enumerate() {
             if n + m == sum && i != j {
@@ -55,7 +55,7 @@ impl Solver for Day1 {
 mod tests {
     use super::*;
 
-    static INPUT: &'static [i64] = &[1721, 979, 366, 299, 675, 1456];
+    static INPUT: &[i64] = &[1721, 979, 366, 299, 675, 1456];
 
     #[test]
     fn part1() {

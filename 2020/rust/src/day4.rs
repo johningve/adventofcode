@@ -39,18 +39,13 @@ impl Passport {
     }
 
     fn validate_part1(&self) -> bool {
-        if self.byr == 0
+        !(self.byr == 0
             || self.iyr == 0
             || self.eyr == 0
             || self.hgt.is_empty()
             || self.hcl.is_empty()
             || self.ecl.is_empty()
-            || self.pid.is_empty()
-        {
-            return false;
-        } else {
-            return true;
-        }
+            || self.pid.is_empty())
     }
 
     fn validate_part2(&self) -> bool {
@@ -66,15 +61,15 @@ impl Passport {
         if self.eyr < 2020 || self.eyr > 2030 {
             return false;
         }
-        if self.hgt.find("cm").is_some() {
+        if self.hgt.contains("cm") {
             if let Ok(h) = self.hgt[..self.hgt.len() - 2].parse::<i16>() {
-                if h < 150 || h > 193 {
+                if !(150..=193).contains(&h) {
                     return false;
                 }
             }
-        } else if self.hgt.find("in").is_some() {
+        } else if self.hgt.contains("in") {
             if let Ok(h) = self.hgt[..self.hgt.len() - 2].parse::<i16>() {
-                if h < 59 || h > 76 {
+                if !(59..=76).contains(&h) {
                     return false;
                 }
             }
@@ -97,7 +92,7 @@ impl Passport {
             return false;
         }
 
-        return true;
+        true
     }
 }
 
