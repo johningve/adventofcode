@@ -17,7 +17,8 @@ macro_rules! add_solutions {
 		mod $m;
 		use $m::$t;
 		)+
-		fn get_solution(day: &str, lines: impl Iterator<Item = String>) -> Option<(i64, i64)> {
+		pub fn get_solution(day: &str, lines: impl Iterator<Item = String>) -> Option<(i64, i64)> {
+            use crate::solver::Solver;
 			match day {
 				$($n => Some($t::new(lines).solve()),)+
 				_ => None,

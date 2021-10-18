@@ -1,5 +1,3 @@
-use solver::Solver;
-
 use std::env;
 use std::fs::File;
 use std::io::{self, BufRead};
@@ -9,22 +7,12 @@ use std::process;
 
 #[macro_use]
 mod solver;
+mod days;
 mod util;
-
-add_solutions![
-    "day1" => day1::Day1,
-    "day2" => day2::Day2,
-    "day3" => day3::Day3,
-    "day4" => day4::Day4,
-    "day5" => day5::Day5,
-    "day6" => day6::Day6,
-    "day7" => day7::Day7,
-    "day8" => day8::Day8,
-    "day9" => day9::Day9,
-];
 
 fn main() -> io::Result<()> {
     // open second argument as file
+
     let args: Vec<String> = env::args().collect();
     if args.len() < 3 {
         println!("Usage: {} [day, e.g. 'day1'] [path to input].", args[0]);
@@ -34,7 +22,7 @@ fn main() -> io::Result<()> {
     let file = File::open(path)?;
     let lines = io::BufReader::new(file).lines().map(Result::unwrap);
 
-    if let Some(solution) = get_solution(&args[1], lines) {
+    if let Some(solution) = days::get_solution(&args[1], lines) {
         println!("{}: {}, {}", args[1], solution.0, solution.1);
     } else {
         println!("Solution for {} not found", args[1]);

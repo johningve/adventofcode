@@ -39,13 +39,6 @@ impl Day9 {
     fn solve_part2(&self) -> i64 {
         -1
     }
-
-    fn set_preamble_len(&mut self, preamble_len: usize) {
-        if preamble_len == 0 {
-            panic!("preamble length must be nonzero");
-        }
-        self.preamble_len = preamble_len;
-    }
 }
 
 impl Solver for Day9 {
@@ -63,7 +56,7 @@ impl Solver for Day9 {
 
 #[cfg(test)]
 mod tests {
-    use crate::day9::Day9;
+    use super::Day9;
 
     #[test]
     fn part1() {
