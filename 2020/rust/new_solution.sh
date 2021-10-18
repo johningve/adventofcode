@@ -5,16 +5,16 @@ if [ "$#" -lt 1 ]; then
     exit 1
 fi
 
-main_file="src/main.rs"
-day_file="src/day$1.rs"
+main_file="src/days/mod.rs"
+day_file="src/days/day$1.rs"
 
 if [ -f "$day_file" ]; then
     echo "File '$day_file' already exists!"
     exit 1
 fi
 
-search_pattern="    \"day[[:digit:]]*\" => day[[:digit:]]*::Day[[:digit:]]*"
-insert_pattern="    \"day$1\" => day$1::Day$1,"
+search_pattern="    [[:digit:]]* => day[[:digit:]]*::Day[[:digit:]]*"
+insert_pattern="    $1 => day$1::Day$1,"
 
 # add new day to solutions
 

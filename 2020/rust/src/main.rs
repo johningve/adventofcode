@@ -2,31 +2,38 @@ use std::env;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::iter::Iterator;
-use std::path::PathBuf;
-use std::process;
+
+use anyhow::bail;
+use web::AocClient;
 
 #[macro_use]
 mod solver;
 mod days;
 mod util;
+mod web;
 
-fn main() -> io::Result<()> {
-    // open second argument as file
+fn main() -> anyhow::Result<()> {
+    let client =
+        AocClient::new().expect("you must create a .session file containing your session cookie");
 
-    let args: Vec<String> = env::args().collect();
-    if args.len() < 3 {
-        println!("Usage: {} [day, e.g. 'day1'] [path to input].", args[0]);
-        process::exit(1);
-    }
-    let path = PathBuf::from(&args[2]);
+    let mut args = env::args();
+
+    args.next().unwrap();
+    let day = args
+        .next()
+        .expect("you must specify the day to run")
+        .parse()
+        .expect("the day must be a positive integer");
+
+    let path = client.load_input(2020, day)?;
+
     let file = File::open(path)?;
     let lines = io::BufReader::new(file).lines().map(Result::unwrap);
 
-    if let Some(solution) = days::get_solution(&args[1], lines) {
-        println!("{}: {}, {}", args[1], solution.0, solution.1);
+    if let Some(solution) = days::get_solution(day, lines) {
+        println!("day{}: {}, {}", day, solution.0, solution.1);
     } else {
-        println!("Solution for {} not found", args[1]);
-        process::exit(1);
+        bail!("Solution for day{} not found", day);
     }
 
     Ok(())
