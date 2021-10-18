@@ -10,4 +10,5 @@ add_solutions![
     7 => day7::Day7,
     8 => day8::Day8,
     9 => day9::Day9,
+    10 => day10::Day10,
 ];
