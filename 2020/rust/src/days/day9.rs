@@ -1,4 +1,4 @@
-use std::collections::VecDeque;
+use std::{cmp::Ordering, collections::VecDeque};
 
 use crate::solver::Solver;
 
@@ -37,6 +37,27 @@ impl Day9 {
     }
 
     fn solve_part2(&self) -> i64 {
+        let number = self.solve_part1();
+        for (i, n) in self.numbers.iter().enumerate() {
+            let mut largest = *n;
+            let mut smallest = *n;
+            let mut sum = *n;
+            for m in self.numbers.iter().skip(i + 1) {
+                if *m < smallest {
+                    smallest = *m;
+                }
+                if *m > largest {
+                    largest = *m;
+                }
+                sum += *m;
+
+                match sum.cmp(&number) {
+                    Ordering::Equal => return smallest + largest,
+                    Ordering::Greater => break,
+                    Ordering::Less => (),
+                }
+            }
+        }
         -1
     }
 }
